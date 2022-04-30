@@ -30,7 +30,6 @@ describe("Calculator", () => {
     cy.get('#number9').click();
     cy.get('#operator-subtract').click();
     cy.get('#number8').click();
-
     cy.get('#operator-equals').click();
     cy.get('.display').should('contain', '-7.444444444444445')
   })
@@ -58,5 +57,49 @@ describe("Calculator", () => {
     cy.get('#operator-equals').click();
     cy.get('.display').should('contain', 'Error')
 
+  })
+
+  it ('should display positive numbers' , () => {
+    cy.get('#number2').click();
+    cy.get('#number4').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain', '24');
+  })
+
+  it('should display decimals numbers' , () => {
+    cy.get('#number2').click();
+    cy.get('#number3').click();
+    cy.get('#decimal').click();
+    cy.get('#operator-divide').click();
+    cy.get('#number9').click();
+    cy.get('#decimal').click();
+    cy.get('#number8').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain','2.346938775510204')
+  })
+
+  it('should display large numbers' , () => {
+    cy.get('#number2').click();
+    cy.get('#operator_add').click();
+    cy.get('#number3').click();
+    cy.get('#operator-divide').click();
+    cy.get('#number9').click();
+    cy.get('#operator-subtract').click();
+    cy.get('#number8').click();
+    cy.get('#decimal').click();
+    cy.get('#number1').click();
+    cy.get('#number9').click();
+    cy.get('#number2').click();
+    cy.get('#operator_add').click();
+    cy.get('#number3').click();
+    cy.get('#number2').click();
+    cy.get('#operator_add').click();
+    cy.get('#number3').click();
+    cy.get('#operator-divide').click();
+    cy.get('#number9').click();
+    cy.get('#operator-subtract').click();
+    cy.get('#number8').click();
+    cy.get('#operator-equals').click();
+    cy.get('.display').should('contain','-4.959604938271605')
   })
 })
